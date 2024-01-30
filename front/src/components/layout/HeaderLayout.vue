@@ -23,8 +23,26 @@ header {
   display: flex;
   align-items: center;
 
-  img {
-    height: 2.5em;
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+
+    color: inherit;
+    text-decoration: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      height: 2.5em;
+    }
+
+    span {
+      font-size: 1.3em;
+      font-weight: bold;
+    }
   }
 }
 </style>
