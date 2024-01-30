@@ -24,5 +24,11 @@ export default {
 <style>
 #app {
   font-family: sans-serif;
+
+  min-height: 100vh;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
 }
 </style>
