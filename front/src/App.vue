@@ -21,7 +21,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 #app {
   font-family: sans-serif;
 
