@@ -1,16 +1,22 @@
 <template>
   <div id="app">
     <HeaderLayout />
+    <BodyLayout />
+    <FooterLayout />
   </div>
 </template>
 
 <script>
 import HeaderLayout from "./components/layout/HeaderLayout.vue";
+import BodyLayout from "./components/layout/BodyLayout.vue";
+import FooterLayout from "./components/layout/FooterLayout.vue";
 
 export default {
   name: "App",
   components: {
     HeaderLayout,
+    FooterLayout,
+    BodyLayout,
   },
 };
 </script>
