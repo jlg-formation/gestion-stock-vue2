@@ -1,5 +1,5 @@
 import { Store } from "vuex";
-import { sleep } from "@/utils/misc";
+import { api } from "../api";
 
 export const articleStore = new Store({
   state: {
@@ -9,21 +9,16 @@ export const articleStore = new Store({
     ],
   },
   actions: {
-    empty(state) {
-      state.articles = [];
-    },
     async add(store, newArticle) {
-      await sleep(300);
-      store.state.articles.push(newArticle);
+      await api.add(newArticle);
+      store.state.articles = await api.getArticles();
     },
     async remove(store, ids) {
-      await sleep(300);
-      store.state.articles = store.state.articles.filter(
-        (a) => !ids.includes(a.id)
-      );
+      await api.remove(ids);
+      store.state.articles = await api.getArticles();
     },
-    async refresh() {
-      await sleep(300);
+    async refresh(store) {
+      store.state.articles = await api.getArticles();
     },
   },
 });
