@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <router-link to="/about"> Mentions Légales </router-link>
+    <router-link to="/legal"> Mentions Légales </router-link>
   </footer>
 </template>
 
