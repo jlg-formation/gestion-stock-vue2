@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import { stockRoutes } from "../stock/router";
+import { stockRoute } from "../stock/router";
 
 Vue.use(VueRouter);
 
@@ -20,7 +20,7 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "legal" */ "../views/LegalView.vue"),
   },
-  ...stockRoutes,
+  stockRoute,
 ];
 
 const router = new VueRouter({

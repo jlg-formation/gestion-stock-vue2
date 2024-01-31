@@ -1,7 +1,7 @@
 <template>
   <header>
     <router-link to="/">
-      <img src="assets/logo.svg" alt="Logo Gestion Stock" />
+      <img src="/assets/logo.svg" alt="Logo Gestion Stock" />
       <span>Gestion Stock</span>
     </router-link>
   </header>
