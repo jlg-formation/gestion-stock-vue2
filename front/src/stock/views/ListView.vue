@@ -36,8 +36,8 @@ export default {
         <tbody>
           <tr v-for="a in articles" :key="a.id">
             <td class="name">{{ a.name }}</td>
-            <td class="price">{{ a.price }} €</td>
-            <td class="qty">{{ a.qty }}</td>
+            <td class="price number">{{ a.price }} €</td>
+            <td class="qty number">{{ a.qty }}</td>
           </tr>
         </tbody>
       </table>
@@ -86,6 +86,10 @@ table {
 
     tr.selected {
       background: #ccc;
+    }
+
+    .number {
+      text-align: right;
     }
   }
 }
