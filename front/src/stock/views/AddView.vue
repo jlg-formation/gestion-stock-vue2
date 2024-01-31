@@ -48,11 +48,11 @@ export default {
       <button class="primary" :disabled="isAdding">
         <fa-icon
           :icon="'fa-solid ' + (this.isAdding ? 'fa-circle-notch' : 'fa-plus')"
+          :spin="isAdding"
         />
         <span>Ajouter</span>
       </button>
     </form>
-    {{ isAdding }}
   </main>
 </template>
 
