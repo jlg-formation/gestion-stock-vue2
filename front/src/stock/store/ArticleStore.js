@@ -22,5 +22,8 @@ export const articleStore = new Store({
         (a) => !ids.includes(a.id)
       );
     },
+    async refresh() {
+      await sleep(300);
+    },
   },
 });

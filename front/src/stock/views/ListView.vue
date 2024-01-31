@@ -25,6 +25,11 @@ export default {
       const ids = [...this.selectedArticles].map((a) => a.id);
       await articleStore.dispatch("remove", ids);
     },
+    async refresh() {
+      console.log("refreshing");
+      await articleStore.dispatch("refresh");
+      console.log("refreshed");
+    },
   },
 };
 </script>
@@ -34,7 +39,7 @@ export default {
     <h1>Liste des articles</h1>
     <div class="content">
       <nav>
-        <button title="Rafraîchir">
+        <button title="Rafraîchir" @click="refresh">
           <fa-icon icon="fa-solid fa-rotate-right" />
         </button>
         <router-link append to="add" class="button" title="Ajouter">
