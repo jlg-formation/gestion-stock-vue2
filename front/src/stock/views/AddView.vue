@@ -10,16 +10,23 @@ export default {
         qty: 1,
       },
       isAdding: false,
+      errorMsg: "",
     };
   },
   methods: {
     async handleSubmit() {
-      this.isAdding = true;
-      // take a snapshot of a the reactive newArticle data.
-      const newArticle = { ...this.newArticle };
-      await articleStore.dispatch("add", newArticle);
-      await this.$router.push({ name: "stockList" });
-      this.isAdding = false;
+      try {
+        this.isAdding = true;
+        // take a snapshot of a the reactive newArticle data.
+        const newArticle = { ...this.newArticle };
+        await articleStore.dispatch("add", newArticle);
+        await this.$router.push({ name: "stockList" });
+      } catch (err) {
+        console.log("err: ", err);
+        this.errorMsg = err.message;
+      } finally {
+        this.isAdding = false;
+      }
     },
   },
 };
@@ -44,7 +51,9 @@ export default {
         <input type="number" v-model="newArticle.qty" />
         <span class="error"></span>
       </label>
-      <div class="error"></div>
+      <div class="error">
+        {{ errorMsg }}
+      </div>
       <button class="primary" :disabled="isAdding">
         <fa-icon
           :icon="'fa-solid ' + (this.isAdding ? 'fa-circle-notch' : 'fa-plus')"
@@ -81,6 +90,7 @@ form {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
   }
 }
 </style>
