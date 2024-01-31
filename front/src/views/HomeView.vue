@@ -10,3 +10,9 @@ export default {
   name: "HomeView",
 };
 </script>
+
+<style scoped lang="scss">
+main {
+  flex: 0;
+}
+</style>
