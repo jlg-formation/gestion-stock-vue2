@@ -1,8 +1,7 @@
-import StockView from "./views/StockView";
-
 export const stockRoute = {
   path: "/stock",
-  component: StockView,
+  component: () =>
+    import(/* webpackChunkName: "stock_list" */ "./views/StockView.vue"),
   children: [
     {
       path: "",
