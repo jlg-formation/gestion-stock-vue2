@@ -1,3 +1,3 @@
 <template>
-  <p>Body works!</p>
+  <router-view />
 </template>

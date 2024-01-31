@@ -1,9 +1,9 @@
 <template>
   <header>
-    <a href="#">
+    <router-link to="/">
       <img src="assets/logo.svg" alt="Logo Gestion Stock" />
       <span>Gestion Stock</span>
-    </a>
+    </router-link>
   </header>
 </template>
 
