@@ -9,14 +9,17 @@ export default {
         price: 0,
         qty: 1,
       },
+      isAdding: false,
     };
   },
   methods: {
     async handleSubmit() {
+      this.isAdding = true;
       // take a snapshot of a the reactive newArticle data.
       const newArticle = { ...this.newArticle };
       await articleStore.dispatch("add", newArticle);
       await this.$router.push({ name: "stockList" });
+      this.isAdding = false;
     },
   },
 };
@@ -42,11 +45,14 @@ export default {
         <span class="error"></span>
       </label>
       <div class="error"></div>
-      <button class="primary">
-        <fa-icon icon="fa-solid fa-plus" />
+      <button class="primary" :disabled="isAdding">
+        <fa-icon
+          :icon="'fa-solid ' + (this.isAdding ? 'fa-circle-notch' : 'fa-plus')"
+        />
         <span>Ajouter</span>
       </button>
     </form>
+    {{ isAdding }}
   </main>
 </template>
 
