@@ -13,12 +13,10 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      console.log("onsubmit");
       // take a snapshot of a the reactive newArticle data.
       const newArticle = { ...this.newArticle };
-      console.log("newArticle: ", newArticle);
       await articleStore.dispatch("add", newArticle);
-      console.log("article added.");
+      await this.$router.push({ name: "stockList" });
     },
   },
 };

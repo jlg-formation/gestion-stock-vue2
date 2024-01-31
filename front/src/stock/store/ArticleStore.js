@@ -13,7 +13,7 @@ export const articleStore = new Store({
       state.articles = [];
     },
     async add(store, newArticle) {
-      await sleep(2000);
+      await sleep(300);
       store.state.articles.push(newArticle);
     },
   },
