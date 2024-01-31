@@ -1,6 +1,13 @@
 <script>
+import { articleStore } from "../store/ArticleStore";
+
 export default {
   name: "ListView",
+  computed: {
+    articles() {
+      return articleStore.state.articles;
+    },
+  },
 };
 </script>
 
@@ -27,25 +34,10 @@ export default {
           <th class="qty">Quantité</th>
         </thead>
         <tbody>
-          <tr>
-            <td class="name">Tournevis</td>
-            <td class="price">2.99 €</td>
-            <td class="qty">240</td>
-          </tr>
-          <tr>
-            <td class="name">Pelle</td>
-            <td class="price">10.00 €</td>
-            <td class="qty">240</td>
-          </tr>
-          <tr>
-            <td class="name">Marteau</td>
-            <td class="price">4.50 €</td>
-            <td class="qty">240</td>
-          </tr>
-          <tr>
-            <td class="name">Ponçeuse</td>
-            <td class="price">55.00 €</td>
-            <td class="qty">240</td>
+          <tr v-for="a in articles" :key="a.id">
+            <td class="name">{{ a.name }}</td>
+            <td class="price">{{ a.price }} €</td>
+            <td class="qty">{{ a.qty }}</td>
           </tr>
         </tbody>
       </table>
