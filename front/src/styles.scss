@@ -1,5 +1,7 @@
 @use "../node_modules/normalize.css/normalize.css";
 
+@use "./scss/button.scss";
+
 * {
   box-sizing: border-box;
 }
@@ -10,6 +12,7 @@ main {
   display: flex;
   flex-flow: column;
   align-items: center;
+  gap: 0.5em;
   p {
     width: 100%;
   }
