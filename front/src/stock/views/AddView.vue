@@ -1,6 +1,15 @@
 <script>
 export default {
   name: "HomeView",
+  data() {
+    return {
+      newArticle: {
+        name: "Truc",
+        price: 0,
+        qty: 1,
+      },
+    };
+  },
 };
 </script>
 
@@ -10,17 +19,17 @@ export default {
     <form>
       <label>
         <span>Nom</span>
-        <input type="text" />
+        <input type="text" v-model="newArticle.name" />
         <span class="error"></span>
       </label>
       <label>
         <span>Prix</span>
-        <input type="number" />
+        <input type="number" v-model="newArticle.price" />
         <span class="error"></span>
       </label>
       <label>
         <span>Quantité</span>
-        <input type="number" />
+        <input type="number" v-model="newArticle.qty" />
         <span class="error"></span>
       </label>
       <div class="error"></div>
@@ -29,6 +38,9 @@ export default {
         <span>Ajouter</span>
       </button>
     </form>
+    <div>
+      {{ newArticle }}
+    </div>
   </main>
 </template>
 
