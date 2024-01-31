@@ -3,9 +3,27 @@ import { articleStore } from "../store/ArticleStore";
 
 export default {
   name: "ListView",
+  data() {
+    return {
+      selectedArticles: new Set(),
+    };
+  },
   computed: {
     articles() {
       return articleStore.state.articles;
+    },
+  },
+  methods: {
+    select(a) {
+      console.log("select");
+      this.selectedArticles.has(a)
+        ? this.selectedArticles.delete(a)
+        : this.selectedArticles.add(a);
+      this.selectedArticles = new Set(this.selectedArticles);
+    },
+    async remove() {
+      const ids = [...this.selectedArticles].map((a) => a.id);
+      await articleStore.dispatch("remove", ids);
     },
   },
 };
@@ -22,7 +40,11 @@ export default {
         <router-link append to="add" class="button" title="Ajouter">
           <fa-icon icon="fa-solid fa-plus" />
         </router-link>
-        <button title="Supprimer">
+        <button
+          title="Supprimer"
+          :hidden="selectedArticles.size === 0"
+          @click="remove()"
+        >
           <fa-icon icon="fa-solid fa-trash-can" />
         </button>
       </nav>
@@ -34,7 +56,12 @@ export default {
           <th class="qty">Quantité</th>
         </thead>
         <tbody>
-          <tr v-for="a in articles" :key="a.id">
+          <tr
+            v-for="a in articles"
+            :key="a.id"
+            @click="select(a)"
+            :class="{ selected: selectedArticles.has(a) }"
+          >
             <td class="name">{{ a.name }}</td>
             <td class="price number">{{ a.price }} €</td>
             <td class="qty number">{{ a.qty }}</td>

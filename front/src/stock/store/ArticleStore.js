@@ -16,5 +16,11 @@ export const articleStore = new Store({
       await sleep(300);
       store.state.articles.push(newArticle);
     },
+    async remove(store, ids) {
+      await sleep(300);
+      store.state.articles = store.state.articles.filter(
+        (a) => !ids.includes(a.id)
+      );
+    },
   },
 });
