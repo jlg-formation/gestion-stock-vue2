@@ -8,14 +8,13 @@ export const articleStore = new Store({
       { id: "a2", name: "Pelle", price: 4, qty: 12 },
     ],
   },
-  mutations: {
+  actions: {
     empty(state) {
       state.articles = [];
     },
-    async add(state, newArticle) {
+    async add(store, newArticle) {
       await sleep(2000);
-      console.log("store add -> newArticle: ", newArticle);
-      state.articles.push({ ...newArticle });
+      store.state.articles.push(newArticle);
     },
   },
 });
