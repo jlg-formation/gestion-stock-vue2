@@ -10,6 +10,7 @@ export default {
   data() {
     return {
       selectedArticles: new Set(),
+      errorMsg: "",
     };
   },
   computed: {
@@ -26,14 +27,26 @@ export default {
       this.selectedArticles = new Set(this.selectedArticles);
     },
     async remove() {
-      const ids = [...this.selectedArticles].map((a) => a.id);
-      await articleStore.dispatch("remove", ids);
-      this.selectedArticles.clear();
+      try {
+        this.errorMsg = "";
+        const ids = [...this.selectedArticles].map((a) => a.id);
+        await articleStore.dispatch("remove", ids);
+        this.selectedArticles.clear();
+      } catch (err) {
+        console.log("err: ", err);
+        this.errorMsg = "Erreur Technique";
+      }
     },
     async refresh() {
-      console.log("refreshing");
-      await articleStore.dispatch("refresh");
-      console.log("refreshed");
+      try {
+        this.errorMsg = "";
+        console.log("refreshing");
+        await articleStore.dispatch("refresh");
+        console.log("refreshed");
+      } catch (err) {
+        console.log("err: ", err);
+        this.errorMsg = "Erreur Technique";
+      }
     },
   },
 };
@@ -61,7 +74,9 @@ export default {
         >
         </AsyncButton>
       </nav>
-      <div class="error"></div>
+      <div class="error">
+        {{ errorMsg }}
+      </div>
       <table>
         <thead>
           <th class="name">Nom</th>
