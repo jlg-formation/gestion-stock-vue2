@@ -10,13 +10,18 @@ export default {
       },
     };
   },
+  methods: {
+    handleSubmit: () => {
+      console.log("onsubmit");
+    },
+  },
 };
 </script>
 
 <template>
   <main>
     <h1>Ajouter un article</h1>
-    <form>
+    <form @submit.prevent="handleSubmit()">
       <label>
         <span>Nom</span>
         <input type="text" v-model="newArticle.name" />
@@ -38,9 +43,6 @@ export default {
         <span>Ajouter</span>
       </button>
     </form>
-    <div>
-      {{ newArticle }}
-    </div>
   </main>
 </template>
 
