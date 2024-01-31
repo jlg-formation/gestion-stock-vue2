@@ -49,6 +49,11 @@ export default {
       }
     },
   },
+  mounted() {
+    if (articleStore.articles === undefined) {
+      articleStore.dispatch("refresh");
+    }
+  },
 };
 </script>
 
@@ -93,6 +98,14 @@ export default {
             <td class="name">{{ a.name }}</td>
             <td class="price number">{{ a.price }} €</td>
             <td class="qty number">{{ a.qty }}</td>
+          </tr>
+          <tr v-if="articles === undefined">
+            <td colspan="3">
+              <div class="loading">
+                <fa-icon icon="fa-solid fa-circle-notch" :spin="true"></fa-icon>
+                <span>Loading...</span>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -146,6 +159,13 @@ table {
     .number {
       text-align: right;
     }
+  }
+
+  div.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
   }
 }
 </style>

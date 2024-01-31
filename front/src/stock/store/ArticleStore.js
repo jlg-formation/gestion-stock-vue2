@@ -3,10 +3,7 @@ import { api } from "../api";
 
 export const articleStore = new Store({
   state: {
-    articles: [
-      { id: "a1", name: "Tournevis", price: 2.99, qty: 345 },
-      { id: "a2", name: "Pelle", price: 4, qty: 12 },
-    ],
+    articles: undefined,
   },
   actions: {
     async add(store, newArticle) {
