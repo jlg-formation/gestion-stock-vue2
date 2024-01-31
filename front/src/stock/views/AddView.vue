@@ -24,7 +24,10 @@ export default {
         <span class="error"></span>
       </label>
       <div class="error"></div>
-      <button class="primary">Ajouter</button>
+      <button class="primary">
+        <fa-icon icon="fa-solid fa-plus" />
+        <span>Ajouter</span>
+      </button>
     </form>
   </main>
 </template>
