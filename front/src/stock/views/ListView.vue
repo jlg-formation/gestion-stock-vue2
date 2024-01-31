@@ -1,8 +1,12 @@
 <script>
 import { articleStore } from "../store/ArticleStore";
+import AsyncButton from "@/components/AsyncButton.vue";
 
 export default {
   name: "ListView",
+  components: {
+    AsyncButton,
+  },
   data() {
     return {
       selectedArticles: new Set(),
@@ -24,6 +28,7 @@ export default {
     async remove() {
       const ids = [...this.selectedArticles].map((a) => a.id);
       await articleStore.dispatch("remove", ids);
+      this.selectedArticles.clear();
     },
     async refresh() {
       console.log("refreshing");
@@ -39,19 +44,22 @@ export default {
     <h1>Liste des articles</h1>
     <div class="content">
       <nav>
-        <button title="Rafraîchir" @click="refresh">
-          <fa-icon icon="fa-solid fa-rotate-right" />
-        </button>
+        <AsyncButton
+          title="Rafraîchir"
+          :action="refresh"
+          icon="fa-solid fa-rotate-right"
+        >
+        </AsyncButton>
         <router-link append to="add" class="button" title="Ajouter">
           <fa-icon icon="fa-solid fa-plus" />
         </router-link>
-        <button
-          title="Supprimer"
+        <AsyncButton
           :hidden="selectedArticles.size === 0"
-          @click="remove()"
+          title="Supprimer"
+          :action="remove"
+          icon="fa-solid fa-trash-can"
         >
-          <fa-icon icon="fa-solid fa-trash-can" />
-        </button>
+        </AsyncButton>
       </nav>
       <div class="error"></div>
       <table>
