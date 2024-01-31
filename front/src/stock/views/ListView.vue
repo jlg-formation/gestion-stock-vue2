@@ -9,9 +9,15 @@ export default {
     <h1>Liste des articles</h1>
     <div class="content">
       <nav>
-        <button>Rafraîchir</button>
-        <router-link append to="add" class="button">Ajouter</router-link>
-        <button>Supprimer</button>
+        <button title="Rafraîchir">
+          <fa-icon icon="fa-solid fa-rotate-right" />
+        </button>
+        <router-link append to="add" class="button" title="Ajouter">
+          <fa-icon icon="fa-solid fa-plus" />
+        </router-link>
+        <button title="Supprimer">
+          <fa-icon icon="fa-solid fa-trash-can" />
+        </button>
       </nav>
       <div class="error"></div>
       <table>
