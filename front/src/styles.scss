@@ -1,5 +1,7 @@
-body {
-  margin: 0;
+@use "../node_modules/normalize.css/normalize.css";
+
+* {
+  box-sizing: border-box;
 }
 
 main {
@@ -8,4 +10,11 @@ main {
   display: flex;
   flex-flow: column;
   align-items: center;
+  p {
+    width: 100%;
+  }
+
+  width: 100%;
+  max-width: 100ch;
+  margin: 0 auto;
 }
