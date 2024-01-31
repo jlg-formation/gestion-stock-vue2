@@ -1,4 +1,5 @@
 import { Store } from "vuex";
+import { sleep } from "@/utils/misc";
 
 export const articleStore = new Store({
   state: {
@@ -10,6 +11,11 @@ export const articleStore = new Store({
   mutations: {
     empty(state) {
       state.articles = [];
+    },
+    async add(state, newArticle) {
+      await sleep(2000);
+      console.log("store add -> newArticle: ", newArticle);
+      state.articles.push({ ...newArticle });
     },
   },
 });

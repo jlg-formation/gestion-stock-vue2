@@ -1,4 +1,5 @@
 <script>
+import { articleStore } from "../store/ArticleStore";
 export default {
   name: "HomeView",
   data() {
@@ -11,8 +12,12 @@ export default {
     };
   },
   methods: {
-    handleSubmit: () => {
+    handleSubmit() {
       console.log("onsubmit");
+      // take a snapshot of a the reactive newArticle data.
+      const newArticle = { ...this.newArticle };
+      console.log("newArticle: ", newArticle);
+      articleStore.commit("add", newArticle);
     },
   },
 };
