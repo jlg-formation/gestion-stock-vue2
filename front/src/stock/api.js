@@ -1,6 +1,6 @@
 import { sleep } from "@/utils/misc";
 
-const url = "http://localhost:3000/api/articles";
+const url = "/api/articles";
 
 class API {
   async add(newArticle) {
