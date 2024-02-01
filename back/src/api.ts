@@ -1,5 +1,5 @@
 import { Router, Request, Response, json } from "express";
-import { Article, NewArticle } from "./interfaces/article";
+import { Article, NewArticle } from "./interfaces/article.js";
 
 export const generateId = (): string => {
   return Date.now() + "_" + Math.round(Math.random() * 1e12);

@@ -2,7 +2,7 @@ console.log("About to start a server");
 
 import express from "express";
 import serveIndex from "serve-index";
-import api from "./api";
+import api from "./api.js";
 
 const app = express();
 const port = +(process.env.GSTOCK_PORT || 3000);
